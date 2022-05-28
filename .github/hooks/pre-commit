@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Colors
+color_green='\u001b[32m'
+color_underline_green='\033[4;32m'
+color_underline_red='\033[4;31m'
+color_underline_yellow='\033[4;33m'
+color_background_green='\033[42m'
+color_background_red='\033[41m'
+color_reset='\033[0m'
+
+# Intro
+printf "Starting checks on ${color_underline_yellow}commit${color_reset} command with ${color_underline_yellow}git hooks${color_reset}.\n"
+
+
+###############
+# StyleCI
+###############
+printf "\nChecking code syntaxis with ${color_underline_green}StyleCI${color_reset}.\n\n"
+STYLECIOUTPUT=$(./vendor/styleci/cli/bin/styleci analyze)
+echo "${STYLECIOUTPUT}"
+
+if [[ "${STYLECIOUTPUT}" == *"The analysis has detected code style violations"* ]]; then
+    printf "\nAutomated changes from ${color_underline_green}StyleCI were added${color_reset}, check them on the given URL.\n\n"
+fi
+
+
+###############
+# Final success message
+###############
+printf "  ╭──────────────────────────────────────────────────────────────────────────╮  "
+printf "\n  | ${color_background_green}GIT COMMIT SUCCESSFUL${color_reset} ✅                                                 | "
+printf "\n  |                                                                          |  "
+printf "\n  |               ${color_background_green}Thank you traveler.${color_reset} Push to ship 🚀.                       |  "
+printf "\n  |                                                                          |  "
+printf "\n  |                          This is the way.                                |  "
+printf "\n  |                                                                          |  \n"
+printf "  ╰──────────────────────────────────────────────────────────────────────────╯  \n"
+printf "${color_reset}\n"

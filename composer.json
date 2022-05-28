@@ -1,0 +1,39 @@
+{
+    "name": "rflex/nominus",
+    "description": "Control client's and user's structures.",
+    "keywords": [
+        "rflex",
+        "nominus"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "David Miranda",
+            "email": "dmiranda@rflex.cl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0",
+        "styleci/cli": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "RFlex\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RFlex\\NominusServiceProvider"
+            ],
+            "aliases": {
+                "Nominus": "RFlex\\NominusFacade"
+            }
+        }
+    }
+}
