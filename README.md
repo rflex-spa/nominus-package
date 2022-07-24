@@ -17,7 +17,7 @@ composer require rflex/nominus
 ## Usage
 
 ```php
-// Usage description here
+use Rflex/Nominus;
 ```
 
 ### Testing
