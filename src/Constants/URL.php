@@ -1,6 +1,6 @@
 <?php
 
-namespace RFlex\Constants;
+namespace Rflex\Constants;
 
 class URL
 {

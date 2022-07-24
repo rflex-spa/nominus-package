@@ -1,6 +1,6 @@
 <?php
 
-namespace RFlex\Exceptions;
+namespace Rflex\Exceptions;
 
 use Exception;
 

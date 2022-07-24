@@ -23,16 +23,16 @@
     },
     "autoload": {
         "psr-4": {
-            "RFlex\\": "src/"
+            "Rflex\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "RFlex\\NominusServiceProvider"
+                "Rflex\\NominusServiceProvider"
             ],
             "aliases": {
-                "Nominus": "RFlex\\NominusFacade"
+                "Nominus": "Rflex\\NominusFacade"
             }
         }
     }

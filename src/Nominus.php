@@ -1,10 +1,10 @@
 <?php
 
-namespace RFlex;
+namespace Rflex;
 
-use RFlex\Entities\Holding;
-use RFlex\Exceptions\TokenNotFoundException;
-use RFlex\Exceptions\URLNotFoundException;
+use Rflex\Entities\Holding;
+use Rflex\Exceptions\TokenNotFoundException;
+use Rflex\Exceptions\URLNotFoundException;
 
 class Nominus
 {

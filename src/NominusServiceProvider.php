@@ -1,6 +1,6 @@
 <?php
 
-namespace RFlex;
+namespace Rflex;
 
 use Illuminate\Support\ServiceProvider;
 

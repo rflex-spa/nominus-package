@@ -1,11 +1,11 @@
 <?php
 
-namespace RFlex;
+namespace Rflex;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \RFlex\Nominus\Skeleton\SkeletonClass
+ * @see \Rflex\Nominus\Skeleton\SkeletonClass
  */
 class NominusFacade extends Facade
 {

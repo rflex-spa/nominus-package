@@ -1,10 +1,10 @@
 <?php
 
-namespace RFlex\Entities;
+namespace Rflex\Entities;
 
 use Illuminate\Support\Facades\Http;
-use RFlex\Constants\URL;
-use RFlex\Helpers;
+use Rflex\Constants\URL;
+use Rflex\Helpers;
 
 class Holding
 {
