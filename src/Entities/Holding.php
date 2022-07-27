@@ -35,7 +35,7 @@ class Holding
 
     public function branches(): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingId.'/'.URL::BRANCHES));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingId.'/'.URL::BRANCHES, ['holding_id' => $this->holdingId]));
     }
 
     public function organizations(): array

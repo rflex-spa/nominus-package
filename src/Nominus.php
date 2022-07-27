@@ -3,7 +3,6 @@
 namespace Rflex;
 
 use Rflex\Entities\Holding;
-use Rflex\Exceptions\TokenNotFoundException;
 use Rflex\Exceptions\URLNotFoundException;
 
 class Nominus
@@ -13,7 +12,7 @@ class Nominus
 
     public Holding $holding;
 
-    public function __construct(int $holdingId)
+    public function __construct(string $token, int $holdingId)
     {
         if (env('NOMINUS_URL', false) !== false) {
             $this->url = env('NOMINUS_URL');
@@ -21,11 +20,7 @@ class Nominus
             throw new URLNotFoundException;
         }
 
-        if (env('NOMINUS_TOKEN', false) !== false) {
-            $this->token = env('NOMINUS_TOKEN');
-        } else {
-            throw new TokenNotFoundException;
-        }
+        $this->token = $token;
 
         $this->holding = new Holding($this->token, $this->url, $holdingId);
     }
