@@ -25,6 +25,11 @@ class Holding
         $this->organization = new Organization($this->token, $this->url, $holdingUUID);
     }
 
+    public function __invoke(): object
+    {
+        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID));
+    }
+
     /**
      * Retrieve the current holding.
      */
