@@ -12,7 +12,7 @@ class Nominus
 
     public Holding $holding;
 
-    public function __construct(string $token, int $holdingId)
+    public function __construct(string $token, string $holdingUUID)
     {
         if (env('NOMINUS_URL', false) !== false) {
             $this->url = env('NOMINUS_URL');
@@ -22,6 +22,6 @@ class Nominus
 
         $this->token = $token;
 
-        $this->holding = new Holding($this->token, $this->url, $holdingId);
+        $this->holding = new Holding($this->token, $this->url, $holdingUUID);
     }
 }

@@ -10,19 +10,19 @@ class Holding
 {
     private string $token;
     private string $url;
-    private int $holdingId;
+    private string $holdingUUID;
 
     public Branch $branch;
     public Organization $organization;
 
-    public function __construct(string $token, string $url, int $holdingId)
+    public function __construct(string $token, string $url, string $holdingUUID)
     {
         $this->token = $token;
         $this->url = $url;
-        $this->holdingId = $holdingId;
+        $this->holdingUUID = $holdingUUID;
 
-        $this->branch = new Branch($this->token, $this->url, $holdingId);
-        $this->organization = new Organization($this->token, $this->url, $holdingId);
+        $this->branch = new Branch($this->token, $this->url, $holdingUUID);
+        $this->organization = new Organization($this->token, $this->url, $holdingUUID);
     }
 
     /**
@@ -30,16 +30,16 @@ class Holding
      */
     public function current(): object
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingId));
+        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID));
     }
 
     public function branches(): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingId.'/'.URL::BRANCHES));
+        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID.'/'.URL::BRANCHES));
     }
 
     public function organizations(): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingId.'/'.URL::ORGANIZATIONS));
+        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID.'/'.URL::ORGANIZATIONS));
     }
 }
