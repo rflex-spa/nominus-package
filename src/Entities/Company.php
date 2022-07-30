@@ -8,17 +8,17 @@ use Rflex\Helpers;
 
 class Company
 {
-    public function __construct(string $token, string $url, int $holdingId)
+    public function __construct(string $token, string $url, string $holdingUUID)
     {
         $this->token = $token;
         $this->url = $url;
-        $this->holdingId = $holdingId;
+        $this->holdingUUID = $holdingUUID;
     }
 
     public function getById(int $organizationId, int $companyId): object
     {
         return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$companyId, [
-            'holding_id' => $this->holdingId,
+            'holding_id' => $this->holdingUUID,
             'organization_id' => $organizationId,
         ]));
     }
