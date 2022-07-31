@@ -17,8 +17,8 @@ class Company
 
     public function getById(int $organizationId, int $companyId): object
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$companyId, [
-            'holding_id' => $this->holdingUUID,
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::COMPANIES.'/'.$companyId, [
+            'holding' => $this->holdingUUID,
             'organization_id' => $organizationId,
         ]));
     }

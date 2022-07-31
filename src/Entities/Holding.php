@@ -21,8 +21,8 @@ class Holding
         $this->url = $url;
         $this->holdingUUID = $holdingUUID;
 
-        $this->branch = new Branch($this->token, $this->url, $holdingUUID);
-        $this->organization = new Organization($this->token, $this->url, $holdingUUID);
+        $this->branch = new Branch($this->token, $this->url, $this->holdingUUID);
+        $this->organization = new Organization($this->token, $this->url, $this->holdingUUID);
     }
 
     /**

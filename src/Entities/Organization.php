@@ -17,37 +17,37 @@ class Organization extends Holding
         $this->url = $url;
         $this->holdingUUID = $holdingUUID;
 
-        $this->area = new Area($this->token, $this->url, $holdingUUID);
-        $this->company = new Company($this->token, $this->url, $holdingUUID);
+        $this->area = new Area($this->token, $this->url, $this->holdingUUID);
+        $this->company = new Company($this->token, $this->url, $this->holdingUUID);
     }
 
     public function getById(int $organizationId): object
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId, ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId, ['holding' => $this->holdingUUID]));
     }
 
     public function getByCode(string $organizationCode): object
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/code/'.$organizationCode, ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/code/'.$organizationCode, ['holding' => $this->holdingUUID]));
     }
 
     public function companies(int $organizationId): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/companies', ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/companies', ['holding' => $this->holdingUUID]));
     }
 
     public function areas(int $organizationId): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/areas', ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/areas', ['holding' => $this->holdingUUID]));
     }
 
     public function products(int $organizationId): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/products', ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/products', ['holding' => $this->holdingUUID]));
     }
 
     public function productIntegrations(int $organizationId, int $productId): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/products/'.$productId.'/integrations', ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::ORGANIZATIONS.'/'.$organizationId.'/products/'.$productId.'/integrations', ['holding' => $this->holdingUUID]));
     }
 }

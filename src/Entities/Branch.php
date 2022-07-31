@@ -17,11 +17,11 @@ class Branch
 
     public function getById(int $branchId): object
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::BRANCHES.'/'.$branchId, ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::BRANCHES.'/'.$branchId, ['holding' => $this->holdingUUID]));
     }
 
     public function areas(int $branchId): array
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::BRANCHES.'/'.$branchId.'/'.URL::AREAS, ['holding_id' => $this->holdingUUID]));
+        return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::BRANCHES.'/'.$branchId.'/'.URL::AREAS, ['holding' => $this->holdingUUID]));
     }
 }

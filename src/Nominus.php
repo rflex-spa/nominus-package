@@ -9,6 +9,7 @@ class Nominus
 {
     public string|null $url = null;
     public string|null $token = null;
+    public string|null $holdingUUID = null;
 
     public Holding $holding;
 
@@ -21,7 +22,8 @@ class Nominus
         }
 
         $this->token = $token;
+        $this->holdingUUID = $holdingUUID;
 
-        $this->holding = new Holding($this->token, $this->url, $holdingUUID);
+        $this->holding = new Holding($this->token, $this->url, $this->holdingUUID);
     }
 }

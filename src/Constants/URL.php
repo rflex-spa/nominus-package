@@ -8,4 +8,5 @@ class URL
     const BRANCHES = 'branches';
     const ORGANIZATIONS = 'organizations';
     const AREAS = 'areas';
+    const COMPANIES = 'companies';
 }
