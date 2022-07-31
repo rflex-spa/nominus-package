@@ -1,0 +1,16 @@
+name: Main CI/CD
+on:
+  push:
+    branches: [develop, production]
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    container:
+      image: laravelphp/vapor:php80
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "8.0"
+          version: 2
+      - run: ./vendor/bin/phpstan analyse --memory-limit=1G
