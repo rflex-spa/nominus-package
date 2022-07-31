@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 use Rflex\Constants\URL;
 use Rflex\Helpers;
 
-class Organization extends Holding
+class Organization
 {
     public Area $area;
     public Company $company;

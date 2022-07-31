@@ -15,6 +15,6 @@ class Helpers
             return $response->object();
         }
 
-        $response->throw();
+        return $response->throw();
     }
 }

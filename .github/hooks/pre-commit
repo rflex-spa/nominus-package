@@ -26,6 +26,25 @@ fi
 
 
 ###############
+# PHPStan
+###############
+printf "\nFirst ${color_underline_green}PHPStan${color_reset} analysis.\n\n"
+
+PHPSTANOUTPUT=$(./vendor/bin/phpstan analyse)
+echo "${PHPSTANOUTPUT}"
+
+if [[ "${PHPSTANOUTPUT}" != *"[OK] No errors"* ]]; then
+    printf "  ╭──────────────────────────────────────────────────────────────────────────╮  "
+    printf "\n  | ${color_background_red}GIT COMMIT STOPPED${color_reset} ✋                                                    | "
+    printf "\n  |                                                                          |  "
+    printf "\n  |           ${color_background_red}PHPStan analysis failed.${color_reset} You have ${color_underline_yellow}errors${color_reset} on your code.         |  "
+    printf "\n  |                                                                          |  \n"
+    printf "  ╰──────────────────────────────────────────────────────────────────────────╯  \n"
+    exit 1
+fi
+
+
+###############
 # Final success message
 ###############
 printf "  ╭──────────────────────────────────────────────────────────────────────────╮  "

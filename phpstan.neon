@@ -11,12 +11,9 @@ parameters:
     reportUnmatchedIgnoredErrors: false
 
     ignoreErrors:
-        #- '#Parameter .* expects .*, Illuminate\\Database\\Eloquent\\Model given#'
-        #- '#Access to an undefined property App\\Models\\*#'
-        #- '#Parameter .* \$separator of function explode expects non-empty-string, string given#'
-        #- '#Method .* should return .* but returns Illuminate\\Database\\Eloquent\\Model*#'
-        #- '#Call to an undefined method Illuminate\\Database\\Eloquent\\Model*#'
+        - '#Access to an undefined property Rflex\\Entities\\*#'
 
     excludePaths:
+        - ./src/NominusServiceProvider.php
 
     checkMissingIterableValueType: false
