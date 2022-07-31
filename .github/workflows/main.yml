@@ -9,9 +9,11 @@ jobs:
       image: laravelphp/vapor:php80
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v6
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          php_version: "8.0"
-          version: 2
+          php-version: 8.0
+          tools: composer:v2
+          coverage: none
       - run: COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-interaction --prefer-dist --optimize-autoloader
       - run: ./vendor/bin/phpstan analyse --memory-limit=1G
