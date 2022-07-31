@@ -1,0 +1,22 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src
+
+    level: 6
+
+    reportUnmatchedIgnoredErrors: false
+
+    ignoreErrors:
+        #- '#Parameter .* expects .*, Illuminate\\Database\\Eloquent\\Model given#'
+        #- '#Access to an undefined property App\\Models\\*#'
+        #- '#Parameter .* \$separator of function explode expects non-empty-string, string given#'
+        #- '#Method .* should return .* but returns Illuminate\\Database\\Eloquent\\Model*#'
+        #- '#Call to an undefined method Illuminate\\Database\\Eloquent\\Model*#'
+
+    excludePaths:
+
+    checkMissingIterableValueType: false
