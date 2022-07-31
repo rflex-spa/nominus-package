@@ -1,4 +1,5 @@
-preset: laravel
-
-disabled:
-  - single_class_element_per_statement
+php:
+  preset: laravel
+  version: 8
+  disabled:
+    - single_class_element_per_statement
