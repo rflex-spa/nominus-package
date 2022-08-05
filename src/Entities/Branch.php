@@ -20,7 +20,7 @@ class Branch
         return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::BRANCHES.'/'.$branchId, ['holding' => $this->holdingUUID]));
     }
 
-    public function areas(int $branchId): array
+    public function areas(int $branchId): array|object
     {
         return Helpers::returnOrException(Http::withToken($this->token)->post($this->url.'/'.URL::BRANCHES.'/'.$branchId.'/'.URL::AREAS, ['holding' => $this->holdingUUID]));
     }

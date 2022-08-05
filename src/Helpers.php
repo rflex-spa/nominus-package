@@ -12,7 +12,7 @@ class Helpers
     public static function returnOrException(Response $response): object|array
     {
         if ($response->successful() === true) {
-            return $response->object();
+            return $response->object()->data;
         }
 
         return $response->throw();

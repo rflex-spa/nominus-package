@@ -42,4 +42,9 @@ class Holding
     {
         return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID.'/'.URL::ORGANIZATIONS));
     }
+
+    public function info(): object
+    {
+        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID.'/'.URL::HOLDINGS_INFO));
+    }
 }
