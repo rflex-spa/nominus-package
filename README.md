@@ -8,6 +8,11 @@ Install package via composer:
 composer require rflex/nominus
 ```
 
+Set environment variable:
+```bash
+NOMINUS_URL=https://nominus.example.com
+```
+
 Import class and instantiate it:
 ```php
 use Rflex/Nominus;
@@ -38,6 +43,12 @@ $nominus->holding->branches();
 Get the list of the holding's organizations.
 ```php
 $nominus->holding->organizations();
+```
+
+### Holding information
+Retrieve the complete list of information from a holding.
+```php
+$nominus->holding->info();
 ```
 
 ## Branches
