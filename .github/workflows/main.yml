@@ -3,15 +3,41 @@ on:
   push:
     branches: [develop, production]
 jobs:
-  phpstan:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.2
+          tools: composer:v2
+          coverage: none
+      - name: "Composer validate"
+        run: composer validate
+      - name: "Composer install"
+        run: COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
           tools: composer:v2
           coverage: none
       - run: COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-interaction --prefer-dist --optimize-autoloader
-      - run: ./vendor/bin/phpstan analyse --memory-limit=1G
+      - name: "Run tests"
+        run: ./vendor/phpunit/phpunit/phpunit
+
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          tools: composer:v2
+          coverage: none
+      - run: COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-interaction --prefer-dist --optimize-autoloader
+      - run: ./vendor/bin/phpstan analyse

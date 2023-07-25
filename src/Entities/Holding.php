@@ -2,9 +2,9 @@
 
 namespace Rflex\Entities;
 
-use Illuminate\Support\Facades\Http;
 use Rflex\Constants\URL;
 use Rflex\Helpers;
+use GuzzleHttp\Client;
 
 class Holding
 {
@@ -28,9 +28,26 @@ class Holding
     /**
      * Retrieve the current holding.
      */
+    /* public function current(): object
+    {
+        return Helpers::checkResponse((new Client(['base_uri' => $this->url.'/api/']))->request('GET', URL::HOLDINGS.'/'.$this->holdingUUID, [
+            'headers' => [
+                'Authorization' => 'Bearer '. $this->token
+            ]
+        ]));
+    } */
+
     public function current(): object
     {
-        return Helpers::returnOrException(Http::withToken($this->token)->get($this->url.'/'.URL::HOLDINGS.'/'.$this->holdingUUID));
+        $client = new Client(['base_uri' => $this->url.'/api/']);
+
+        $response = $client->request('GET', URL::HOLDINGS.'/'.$this->holdingUUID, [
+            'headers' => [
+                'Authorization' => 'Bearer '. $this->token
+            ]
+        ]);
+
+        return Helpers::checkResponse($response);
     }
 
     public function branches(): array

@@ -45,6 +45,25 @@ fi
 
 
 ###############
+# PHPUnit
+###############
+printf "Second ${color_underline_green}PHPUnit${color_reset} tests.\n\n"
+
+PHPUNITOUTPUT=$(./vendor/phpunit/phpunit/phpunit)
+echo "${PHPUNITOUTPUT}"
+
+if [[ "${PHPUNITOUTPUT}" == *"FAIL"* || "${PHPUNITOUTPUT}" == *"WARN"* ]]; then
+    printf "  ╭──────────────────────────────────────────────────────────────────────────╮  "
+    printf "\n  | ${color_background_red}GIT COMMIT STOPPED${color_reset} ✋                                                    | "
+    printf "\n  |                                                                          |  "
+    printf "\n  |         ${color_background_red}PHPUnit have failed tests.${color_reset} You have ${color_underline_yellow}errors${color_reset} on your code.         |  "
+    printf "\n  |                                                                          |  \n"
+    printf "  ╰──────────────────────────────────────────────────────────────────────────╯  \n"
+    exit 1
+fi
+
+
+###############
 # Final success message
 ###############
 printf "  ╭──────────────────────────────────────────────────────────────────────────╮  "

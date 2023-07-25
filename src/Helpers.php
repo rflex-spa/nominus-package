@@ -2,19 +2,20 @@
 
 namespace Rflex;
 
-use Illuminate\Http\Client\Response;
+use \Psr\Http\Message\ResponseInterface;
+use Rflex\Exceptions\NominusNotRespondingException;
 
 class Helpers
 {
     /**
      * Check for a successful response if not, throws a client/server error exception.
      */
-    public static function returnOrException(Response $response): object|array
+    public static function checkResponse(ResponseInterface $response): object|array
     {
-        if ($response->successful() === true) {
-            return $response->object()->data;
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
+            return json_decode($response->getBody(), true)['data'];
         }
 
-        return $response->throw();
+        return throw new NominusNotRespondingException;
     }
 }
